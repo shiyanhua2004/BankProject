@@ -22,7 +22,7 @@ public class SaveInfo {
         objectOutputStream.writeObject(object);
 
     }
-
+//Or here we can write some member-numbers "i", and push them to a txt file
     class Save implements Serializable{
         String info;
     }
