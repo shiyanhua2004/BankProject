@@ -11,7 +11,7 @@ import java.net.Socket;
 public class Server
 {
 
-    static Socket s;
+    static Socket s1;
     static ServerSocket ss;
     static JTextArea chattingBoard;
 
@@ -19,7 +19,7 @@ public class Server
     public static void main(String[] args) throws IOException
     {
         //create the socket
-        s = null;
+        s1 = null;
         InputStreamReader inputStreamReader;
         OutputStreamWriter outputStreamWriter;
 
@@ -28,7 +28,7 @@ public class Server
             //create server socket
             ss = new ServerSocket(4044);
             //connect
-            s = ss.accept();
+            s1 = ss.accept();
             System.out.println("Client connected");
 
             chat();
@@ -100,7 +100,7 @@ public class Server
                 }
                 try
                 {
-                    OutputStream outputStream = s.getOutputStream();
+                    OutputStream outputStream = s1.getOutputStream();
                     // socket sent out the message
                     PrintWriter pw = new PrintWriter(new OutputStreamWriter(outputStream));
 
@@ -119,6 +119,6 @@ public class Server
         });
 
         // use thread to receive
-        new ReceiveThread(s, chattingBoard).start();
+        new ReceiveThread(Server.s1, chattingBoard).start();
     }
 }
